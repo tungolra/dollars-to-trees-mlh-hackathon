@@ -10,13 +10,13 @@ This application is part of [Major League Hacking's (MLH) {all in} Hackathon](ht
     <th>GitHub Repo</th>
     <tr>
         <td>
-        <a src="https://www.loom.com/share/a22c028702d3427fa2fff1d88d2a12c8">Link</a>
+        <a href="https://www.loom.com/share/a22c028702d3427fa2fff1d88d2a12c8">Link</a>
         </td>
         <td>
-        <a src="https://dollarstotrees.vercel.app/">Link</a>
+        <a href="https://dollarstotrees.vercel.app/">Link</a>
         </td>
         <td>
-        <a src="https://github.com/tungolra/visualize-emissions-mlh-hackathon">Link</a>
+        <a href="https://github.com/tungolra/visualize-emissions-mlh-hackathon">Link</a>
         </td>
         </tr>
 </table>
