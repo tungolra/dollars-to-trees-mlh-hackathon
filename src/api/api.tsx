@@ -1,4 +1,4 @@
-export function getEstimate() {
+export function getEstimate(activityId: string, money: number) {
   const baseURL = "https://beta3.api.climatiq.io";
   const apiKey = "EZ0XHJM2KT4FY3M4C04S81SX19Y1";
   
@@ -10,10 +10,10 @@ export function getEstimate() {
     },
     body: JSON.stringify({
       emission_factor: {
-        activity_id: "consumer_goods-type_clothing",
+        activity_id: activityId,
       },
       parameters: {
-        money: 120,
+        money: money,
         money_unit: "usd",
       },
     }),
