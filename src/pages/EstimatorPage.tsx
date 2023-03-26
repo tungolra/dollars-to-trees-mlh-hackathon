@@ -119,39 +119,39 @@ export default function EstimatorPage(): any {
                 <tr>
                   <td>CO2e</td>
                   <td>
-                    {response
+                    {response && response.co2e
                       ? `${response.co2e?.toFixed(2)} ${response.co2e_unit}`
-                      : "Loading..."}
+                      : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>CO2</td>
                   <td>
-                    {response
+                    {response && response.constituent_gases?.co2
                       ? `${response.constituent_gases?.co2?.toFixed(2)} ${
                           response.co2e_unit
                         }`
-                      : "Loading..."}
+                      : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>CH4</td>
                   <td>
-                    {response
+                    {response && response.constituent_gases?.ch4
                       ? `${response.constituent_gases?.ch4?.toFixed(2)} ${
                           response.co2e_unit
                         }`
-                      : "Loading..."}
+                      : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>NO2</td>
                   <td>
-                    {response
+                    {response && response.constituent_gases?.n2o
                       ? `${response.constituent_gases?.n2o?.toFixed(2)} ${
                           response.co2e_unit
                         }`
-                      : "Loading..."}
+                      : "N/A"}
                   </td>
                 </tr>
               </tbody>
