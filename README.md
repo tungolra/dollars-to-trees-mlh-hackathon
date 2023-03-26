@@ -4,8 +4,9 @@
 
 This application is part of [Major League Hacking's (MLH) {all in} Hackathon](https://organize.mlh.io/participants/events/8989-airhacks) - a 24-hour hackathon to build hacks that serves our community.
 
-[Demo]()
-[Site]()
+[Video Demo]()
+[Site](https://dollarstotrees.vercel.app/)
+[GitHub Repo](https://github.com/tungolra)
 
 ### Introduction
 

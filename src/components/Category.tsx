@@ -38,7 +38,7 @@ const Category: React.FC<CategoryProps> = ({
 
   return (
     <div className="d-md-flex justify-content-md-end align-items-center">
-      <ButtonGroup aria-label="Category buttons" className="d-none d-md-block">
+      <ButtonGroup aria-label="Category buttons" className="d-none d-md-block mx-auto">
         {categories.map((category) => (
           <Button
             key={category.name}
