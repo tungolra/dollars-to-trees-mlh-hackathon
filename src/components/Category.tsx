@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Button } from "react-bootstrap";
+import { ButtonGroup, Button, Stack } from "react-bootstrap";
 
 // category images
 
@@ -37,19 +37,39 @@ const Category: React.FC<CategoryProps> = ({
   }
 
   return (
-    <ButtonGroup>
-      {categories.map((category) => (
-        <Button
-          key={category.name}
-          name={category.id}
-          id={category.id}
-          variant={selectedCategory === category.name ? "primary" : "secondary"}
-          onClick={() => handleCategoryChange(category)}
-        >
-          {category.name}
-        </Button>
-      ))}
-    </ButtonGroup>
+    <div className="d-md-flex justify-content-md-end align-items-center">
+      <ButtonGroup aria-label="Category buttons" className="d-none d-md-block">
+        {categories.map((category) => (
+          <Button
+            key={category.name}
+            name={category.id}
+            id={category.id}
+            variant={selectedCategory === category.name ? "success" : "light"}
+            onClick={() => handleCategoryChange(category)}
+          >
+            <label style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
+              {category.name}
+            </label>
+          </Button>
+        ))}
+      </ButtonGroup>
+
+      <Stack direction="vertical" gap={2} className="d-md-none">
+        {categories.map((category) => (
+          <Button
+            key={category.name}
+            name={category.id}
+            id={category.id}
+            variant={selectedCategory === category.name ? "success" : "light"}
+            onClick={() => handleCategoryChange(category)}
+          >
+            <label style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
+              {category.name}
+            </label>
+          </Button>
+        ))}
+      </Stack>
+    </div>
   );
 };
 

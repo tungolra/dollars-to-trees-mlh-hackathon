@@ -4,8 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import { BsChevronUp } from "react-icons/bs";
 import { BsChevronDown } from "react-icons/bs";
-import { FaAngleDoubleDown } from "react-icons/fa";
-
 
 export default function Header() {
   const [show, setShow] = useState(false);
@@ -23,7 +21,7 @@ export default function Header() {
       }}
     >
       <div className="d-flex flex-column align-items-center mx-auto">
-        <Navbar.Brand href="#home">Dollars to Trees</Navbar.Brand>
+        <Navbar.Brand style={{ fontSize: '2rem' }}>Dollars to Trees</Navbar.Brand>
         <Button variant="none" onClick={handleShow}>
           <BsChevronDown size={32} className="double-arrow-icon" />
         </Button>

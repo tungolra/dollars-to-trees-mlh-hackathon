@@ -16,27 +16,6 @@
   margin-bottom: 3vmin;
 }
 
-.fullscreen-modal {
-  max-width: 100vw;
-  max-height: 100vh;
-}
-
-.pulse-button {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.double-arrow-icon {
-  margin-left: 5px;
+.table {
+  border-radius: 10px;
 }

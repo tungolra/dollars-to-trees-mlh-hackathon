@@ -11,7 +11,6 @@ export default function Slider({ setMoney }: SliderProps) {
   const handleChange = (newValue: number[]) => {
     setValue(newValue);
     setMoney(value[0]);
-    // Call your fetch function here with the updated value
   };
 
   return (
@@ -62,7 +61,17 @@ export default function Slider({ setMoney }: SliderProps) {
           </div>
         )}
       />
-      <p>{`$${value[0]}`}</p>
+      <p
+        className="bg-success mx-auto text-white font-bold"
+        style={{
+          marginTop: "3vmin",
+          width: "50%",
+          padding: "10px",
+          fontSize: "1.5rem",
+          borderRadius: "10px",
+          opacity: "0.8",
+        }}
+      >{`$${value[0]}`}</p>
     </div>
   );
 }
