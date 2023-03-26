@@ -4,9 +4,22 @@
 
 This application is part of [Major League Hacking's (MLH) {all in} Hackathon](https://organize.mlh.io/participants/events/8989-airhacks) - a 24-hour hackathon to build hacks that serves our community.
 
-[Video Demo]()
-[Site](https://dollarstotrees.vercel.app/)
-[GitHub Repo](https://github.com/tungolra)
+<table>
+    <th>Video Demo</th>
+    <th>Website</th>
+    <th>GitHub Repo</th>
+    <tr>
+        <td>
+        <a src="https://www.loom.com/share/a22c028702d3427fa2fff1d88d2a12c8">Link</a>
+        </td>
+        <td>
+        <a src="https://dollarstotrees.vercel.app/">Link</a>
+        </td>
+        <td>
+        <a src="https://github.com/tungolra/visualize-emissions-mlh-hackathon">Link</a>
+        </td>
+        </tr>
+</table>
 
 ### Introduction
 
