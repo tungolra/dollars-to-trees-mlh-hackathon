@@ -51,9 +51,8 @@ const Category: React.FC<CategoryProps> = ({ setEmissionFactor }) => {
   );
 
   useEffect(() => {
-    setSelectedCategory(selectedCategory);
     handleCategoryChange(categories[0]);
-  }, [selectedCategory]);
+  }, []);
 
   function handleCategoryChange(category: any) {
     setSelectedCategory(category.name);
