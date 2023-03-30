@@ -48,6 +48,7 @@ export default function Slider({ setMoney }: SliderProps) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              // add pulse animation
             }}
           >
             <div

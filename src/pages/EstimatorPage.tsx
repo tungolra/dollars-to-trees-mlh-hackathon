@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { getEstimate } from "../api/api";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,23 +10,23 @@ import Tree from "../icons/tree.svg";
 import { Table } from "react-bootstrap";
 import AccordionBS from "../components/AccordionBS";
 
-interface ApiResponse {
-  data: string[] | null;
-  co2e: number | null;
+type Factor = {
+  co2e_total: number | null;
+  co2: number | null;
+  ch4: number | null;
+  n2o: number | null;
   co2e_unit: string | null;
-  constituent_gases: {
-    co2e_total: number | null;
-    co2e_other: number | null;
-    co2: number | null;
-    ch4: number | null;
-    n2o: number | null;
-  } | null;
-}
+};
+
+const calculateEmissions = (gas: number, money: number): number => {
+  return gas * money;
+};
 
 const calculateTreeCount = (co2e: number | null): number => {
   if (!co2e) {
     return 0;
   }
+  // 22 kgs of CO2e sequestered per tree
   const trees = co2e / 22;
   return Math.floor(trees);
 };
@@ -42,27 +41,8 @@ function renderTrees(co2e: number | null) {
 }
 
 export default function EstimatorPage(): any {
-  const [response, setResponse] = useState<ApiResponse | null>(null);
-  const [activityId, setActivityId] = useState("consumer_goods-type_clothing");
+  const [emissionFactor, setEmissionFactor] = useState<Factor | null>(null);
   const [money, setMoney] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState<string>("Clothing");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getEstimate(activityId, money);
-        if (response.ok) {
-          const data = await response.json();
-          setResponse(data);
-        } else {
-          console.log("Error fetching data: ", response.statusText);
-        }
-      } catch (error) {
-        console.log("Error fetching data: ", error);
-      }
-    };
-    fetchData();
-  }, [activityId, money]);
 
   return (
     <div>
@@ -75,17 +55,19 @@ export default function EstimatorPage(): any {
             <Image src={shoppingSVG} fluid roundedCircle />
           </Col>
           <Col sm={12} md={8}>
-            <div>{response ? renderTrees(response.co2e) : "Loading..."}</div>
+            <div>
+              {emissionFactor && emissionFactor.co2e_total
+                ? renderTrees(
+                    calculateEmissions(emissionFactor.co2e_total, money)
+                  )
+                : "Loading..."}
+            </div>
           </Col>
         </Row>
         <Row>
           <Col>
             <div style={{ width: "100%", marginBottom: "3vmin" }}>
-              <Category
-                selectedCategory={selectedCategory}
-                onSelectCategory={setSelectedCategory}
-                setActivityId={setActivityId}
-              />
+              <Category setEmissionFactor={setEmissionFactor} />
             </div>
             <Slider setMoney={setMoney} />
             <p
@@ -99,8 +81,12 @@ export default function EstimatorPage(): any {
                 opacity: "0.6",
               }}
             >
-              {response ? calculateTreeCount(response.co2e) : 0} trees are
-              needed to offset your spend
+              {emissionFactor && emissionFactor.co2e_total
+                ? calculateTreeCount(
+                    calculateEmissions(emissionFactor.co2e_total, money)
+                  )
+                : 0}{" "}
+              trees are needed to offset your spend
             </p>
           </Col>
         </Row>
@@ -119,38 +105,44 @@ export default function EstimatorPage(): any {
                 <tr>
                   <td>CO2e</td>
                   <td>
-                    {response && response.co2e
-                      ? `${response.co2e?.toFixed(2)} ${response.co2e_unit}`
+                    {emissionFactor && emissionFactor.co2e_total
+                      ? `${calculateEmissions(
+                          emissionFactor.co2e_total,
+                          money
+                        ).toFixed(2)} ${emissionFactor.co2e_unit}`
                       : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>CO2</td>
                   <td>
-                    {response && response.constituent_gases?.co2
-                      ? `${response.constituent_gases?.co2?.toFixed(2)} ${
-                          response.co2e_unit
-                        }`
+                    {emissionFactor && emissionFactor.co2
+                      ? `${calculateEmissions(
+                          emissionFactor?.co2,
+                          money
+                        ).toFixed(2)} ${emissionFactor.co2e_unit}`
                       : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>CH4</td>
                   <td>
-                    {response && response.constituent_gases?.ch4
-                      ? `${response.constituent_gases?.ch4?.toFixed(2)} ${
-                          response.co2e_unit
-                        }`
+                    {emissionFactor && emissionFactor.ch4
+                      ? `${calculateEmissions(
+                          emissionFactor.ch4,
+                          money
+                        ).toFixed(2)} ${emissionFactor.co2e_unit}`
                       : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td>NO2</td>
                   <td>
-                    {response && response.constituent_gases?.n2o
-                      ? `${response.constituent_gases?.n2o?.toFixed(2)} ${
-                          response.co2e_unit
-                        }`
+                    {emissionFactor && emissionFactor.n2o
+                      ? `${calculateEmissions(
+                          emissionFactor.n2o,
+                          money
+                        ).toFixed(2)} ${emissionFactor.co2e_unit}`
                       : "N/A"}
                   </td>
                 </tr>

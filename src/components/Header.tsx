@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import { BsChevronUp } from "react-icons/bs";
