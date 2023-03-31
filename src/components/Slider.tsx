@@ -35,19 +35,20 @@ export default function Slider({ setMoney }: SliderProps) {
             {children}
           </div>
         )}
-        renderThumb={({ props }) => (
+        renderThumb={({ props, isDragged }) => (
           <div
             {...props}
             style={{
               ...props.style,
-              height: "20px",
-              width: "20px",
+              height: "25px",
+              width: "25px",
               backgroundColor: "#fff",
               boxShadow: "0px 2px 6px #AAA",
               borderRadius: "50%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              // animation: `${isDragged ? "" : "pulse"} 1s infinite`
               // add pulse animation
             }}
           >
@@ -55,13 +56,15 @@ export default function Slider({ setMoney }: SliderProps) {
               style={{
                 height: "8px",
                 width: "8px",
-                backgroundColor: "#CCC",
+                backgroundColor: `${isDragged ? "#CCC" : "#008000"}`,
                 borderRadius: "50%",
+                animation: `${isDragged ? "" : "pulse"} 1s infinite`,
               }}
             ></div>
           </div>
         )}
       />
+      
       <p
         className="bg-success mx-auto text-white font-bold"
         style={{

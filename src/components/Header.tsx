@@ -3,7 +3,11 @@ import { Navbar } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import { BsChevronUp } from "react-icons/bs";
-import { BsChevronDown } from "react-icons/bs";
+
+import Tree from "../icons/tree.svg";
+import { BsFillInfoCircleFill } from "react-icons/bs";
+import Image from "react-bootstrap/Image";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Header() {
   const [show, setShow] = useState(false);
@@ -20,10 +24,22 @@ export default function Header() {
         fontWeight: "bold",
       }}
     >
-      <div className="d-flex flex-column align-items-center mx-auto">
-        <Navbar.Brand style={{ fontSize: '2rem' }}>Dollars to Trees</Navbar.Brand>
+      <div className="d-flex align-items-center mx-auto ">
+        <Image
+          src={Tree}
+          style={{ width: "50px", height: "50px", margin: "0 0.375rem" }}
+        />
+        <Navbar.Brand
+          style={{ fontSize: "2rem", marginRight: "0", margin: "0 3vmin" }}
+        >
+          Dollars to Trees
+        </Navbar.Brand>
         <Button variant="none" onClick={handleShow}>
-          <BsChevronDown size={32} className="double-arrow-icon" />
+          <BsFillInfoCircleFill
+            className="animate-pulse"
+            size={35}
+            style={{ filter: "invert(100%)" }}
+          />
         </Button>
       </div>
       <Modal

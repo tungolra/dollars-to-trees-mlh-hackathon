@@ -7,13 +7,24 @@ export default function Footer() {
       bg="success"
       variant="dark"
       style={{
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
-        height: "50px",
+        height: "100px",
         margin: "0",
         opacity: "0.5",
       }}
     >
-      <Navbar.Text style={{fontWeight: "bold" }}>Created by Ralph Tungol</Navbar.Text>
+      <Navbar.Text style={{ fontWeight: "bold" }}>
+        <a href="https://ralphtungol.vercel.app/" target="_blank">
+          
+        Created by Ralph Tungol
+        </a>
+      </Navbar.Text>
+      <Navbar.Text style={{ fontWeight: "bold" }}>
+        Powered By: React, Vercel, and{" "}
+        <a href="https://www.climatiq.io/docs" target="_blank"> Climatiq API</a>
+      </Navbar.Text>
     </Navbar>
   );
 }

@@ -55,6 +55,24 @@ export default function EstimatorPage(): any {
             <Image src={shoppingSVG} fluid roundedCircle />
           </Col>
           <Col sm={12} md={8}>
+            <div
+            className="mx-auto"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width:"80%",
+                textAlign: "center",
+                zIndex: "-1",
+              }}
+            >
+              <p
+                className="font-bold text-dark"
+                style={{ fontSize: "1.3rem", opacity: ".5" }}
+              >
+                Check to see the number of trees you need to plant for each
+                dollar spent in the clothing industry.
+              </p>
+            </div>
             <div>
               {emissionFactor && emissionFactor.co2e_total
                 ? renderTrees(
